@@ -1,6 +1,29 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <h5>About</h5>
+  <q-page class="q-pa-lg">
+    <h4 class="q-mt-none">About</h4>
+    <p>
+      This little project was created to test the quasar library based an a
+      tutorial by freecodecamp on the subject, but I made some small tweaks on
+      it.
+    </p>
+
+    <p>Where to find me:</p>
+
+    <a
+      v-for="(contact, index) in contacts"
+      :key="index"
+      class="about-logos q-mb-md"
+      :href="`${contact.href}`"
+    >
+      <img
+        class="q-mr-sm"
+        width="32"
+        height="32"
+        :src="`${contact.directory}`"
+        alt="{{ contact.alt }}"
+      />
+      <span>{{ contact.text }}</span>
+    </a>
   </q-page>
 </template>
 
@@ -37,7 +60,33 @@ export default defineComponent({
     const meta = ref<Meta>({
       totalCount: 1200,
     });
-    return { todos, meta };
+
+    const contacts = ref([
+      {
+        directory: 'Images/LI-In-Bug.png',
+        alt: 'linkedin',
+        text: 'guilherme-damasceno-85480211b/',
+        href: 'https://www.linkedin.com/in/guilherme-damasceno-85480211b/',
+      },
+      {
+        directory: 'Images/GitHub-Mark-64px.png',
+        alt: 'github',
+        text: 'PrenitaVulpo/',
+        href: 'https://github.com/PrenitaVulpo',
+      },
+    ]);
+    return { todos, meta, contacts };
   },
 });
 </script>
+
+<style>
+.about-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+</style>
