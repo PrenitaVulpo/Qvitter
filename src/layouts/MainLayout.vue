@@ -17,14 +17,14 @@
     >
       <q-icon class="q-pa-md" name="fas fa-dove" size="lg" color="primary" />
       <q-list>
-        <q-item to="/" clickable v-ripple>
+        <q-item to="/" clickable v-ripple exact>
           <q-item-section avatar>
             <q-icon name="home" size="md" />
           </q-item-section>
 
           <q-item-section class="text-h6 text=weight-bold">Home</q-item-section>
         </q-item>
-        <q-item to="/about" clickable v-ripple>
+        <q-item to="/about" clickable v-ripple exact>
           <q-item-section avatar>
             <q-icon name="help" size="md" />
           </q-item-section>
@@ -51,7 +51,11 @@
       </q-input>
 
       <q-list bordered padding>
-        <q-item v-for="headline in headlinesList" :key="headline.labelOverline">
+        <q-item
+          class="q-pa-md"
+          v-for="headline in headlinesList"
+          :key="headline.labelOverline"
+        >
           <q-item-section>
             <q-item-label overline>{{ headline.labelOverline }}</q-item-label>
             <q-item-label>{{ headline.label }}</q-item-label>
