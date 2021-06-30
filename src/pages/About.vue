@@ -1,29 +1,31 @@
 <template>
   <q-page class="q-pa-lg">
-    <h4 class="q-mt-none">About</h4>
-    <p>
-      This little project was created to test the quasar library based an a
-      tutorial by freecodecamp on the subject, but I made some small tweaks on
-      it.
-    </p>
+    <h4 class="q-mt-none text-weight-bold">About</h4>
+    <div class="text-body1">
+      <p>
+        This little project was created to test the quasar library based on a
+        tutorial by freecodecamp on the subject, but I made some small tweaks on
+        it.
+      </p>
 
-    <p>Where to find me:</p>
+      <p>Where you can find me:</p>
 
-    <a
-      v-for="(contact, index) in contacts"
-      :key="index"
-      class="about-logos q-mb-md"
-      :href="`${contact.href}`"
-    >
-      <img
-        class="q-mr-sm"
-        width="32"
-        height="32"
-        :src="`${contact.directory}`"
-        alt="{{ contact.alt }}"
-      />
-      <span>{{ contact.text }}</span>
-    </a>
+      <a
+        v-for="(contact, index) in contacts"
+        :key="index"
+        class="about-logos q-mb-md"
+        :href="`${contact.href}`"
+      >
+        <img
+          class="q-mr-sm"
+          width="32"
+          height="32"
+          :src="`${contact.directory}`"
+          alt="{{ contact.alt }}"
+        />
+        <span>{{ contact.text }}</span>
+      </a>
+    </div>
   </q-page>
 </template>
 
@@ -88,5 +90,9 @@ export default defineComponent({
   text-decoration: none;
   cursor: pointer;
   color: #000;
+  transition: 0.2s;
+}
+.about-logos:hover {
+  background-color: rgb(0, 0, 0, 0.2);
 }
 </style>
