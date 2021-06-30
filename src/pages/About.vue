@@ -15,6 +15,7 @@
         :key="index"
         class="about-logos q-mb-md"
         :href="`${contact.href}`"
+        target="_blank"
       >
         <img
           class="q-mr-sm"
