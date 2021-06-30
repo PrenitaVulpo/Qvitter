@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> Qwitter </q-toolbar-title>
+        <q-toolbar-title> {{ $route.name }} </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
