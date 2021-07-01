@@ -1,49 +1,72 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page>
+    <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
+      <div class="col">
+        <q-input
+          class="new-qweet"
+          filled
+          bottom-slots
+          v-model="newQweetContent"
+          placeholder="What's happening?"
+          counter
+          autogrow
+          maxlength="280"
+        >
+          <template v-slot:before>
+            <q-avatar size="xl">
+              <img src="~/assets/Images/user.png" />
+            </q-avatar>
+          </template>
+
+          <template v-slot:append>
+            <q-icon
+              v-if="newQweetContent !== ''"
+              name="close"
+              @click="text = ''"
+              class="cursor-pointer"
+            />
+          </template>
+
+          <!-- <template v-slot:after>
+
+          </template> -->
+        </q-input>
+      </div>
+      <div class="col col-shrink q-mb-md">
+        <q-btn
+          class="q-py-sm q-px-md text-weight-bold"
+          unelevated
+          rounded
+          color="primary"
+          label="Qweet"
+          :disable="!newQweetContent"
+        />
+      </div>
+    </div>
+    <q-separator size="10px" color="grey-2" class="divider" />
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/CompositionComponent.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'PageIndex',
-  components: { ExampleComponent },
+  components: {},
   setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1',
-      },
-      {
-        id: 2,
-        content: 'ct2',
-      },
-      {
-        id: 3,
-        content: 'ct3',
-      },
-      {
-        id: 4,
-        content: 'ct4',
-      },
-      {
-        id: 5,
-        content: 'ct5',
-      },
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200,
-    });
-    return { todos, meta };
+    const newQweetContent = ref('');
+
+    return { newQweetContent };
   },
 });
 </script>
+<style scoped lang="sass">
+.new-qweet
+  font-size: 1.1875rem
+  line-height: 1.4
+
+.divider
+  border-top: 1px solid
+  border-bottom: 1px solid
+  border-color: $grey-4
+</style>
