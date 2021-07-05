@@ -44,6 +44,38 @@
       </div>
     </div>
     <q-separator size="10px" color="grey-2" class="divider" />
+    <q-list>
+      <q-item clickable v-ripple>
+        <q-item-section avatar>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
+          </q-avatar>
+        </q-item-section>
+
+        <q-item-section v-for="qweet in qweetList" :key="qweet">
+          <div class="row">
+            <q-item-label lines="1" class="col col-shrink text-weight-bold">{{
+              qweet.user
+            }}</q-item-label>
+            <div class="q-mr-xs" />
+            <q-item-label
+              lines="1"
+              class="q-mt-none col col-shrink text-weight-light"
+              >{{ qweet.username }}</q-item-label
+            >
+            <div class="q-mx-xs dot self-center" />
+            <q-item-label lines="1" class="q-mt-none col col-shrink">{{
+              qweet.time
+            }}</q-item-label>
+          </div>
+          <q-item-label caption class="qweet-content">
+            {{ qweet.content }}
+          </q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-separator inset="item" />
+    </q-list>
   </q-page>
 </template>
 
@@ -55,8 +87,21 @@ export default defineComponent({
   components: {},
   setup() {
     const newQweetContent = ref('');
+    const qweetList = ref([
+      {
+        user: 'Anna',
+        username: '@annamana',
+        time: '1 min ago',
+        content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
 
-    return { newQweetContent };
+      Dolorum
+            ipsum quam labore quidem similique velit vitae natus ut consequatur
+            ad recusandae, veritatis inventore eligendi quae dolore quas,
+            voluptate quaerat exercitationem`,
+      },
+    ]);
+
+    return { newQweetContent, qweetList };
   },
 });
 </script>
@@ -69,4 +114,11 @@ export default defineComponent({
   border-top: 1px solid
   border-bottom: 1px solid
   border-color: $grey-4
+.qweet-content
+  white-space: pre-line
+.dot
+  background: #9BA4AC
+  height: 5px
+  width: 5px
+  border-radius: 100%
 </style>
