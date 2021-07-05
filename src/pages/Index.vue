@@ -71,6 +71,18 @@
           <q-item-label caption class="qweet-content text-body1">
             {{ qweet.content }}
           </q-item-label>
+          <div class="row justify-between q-mt-sm q-pr-xl q-mr-lg qweet-icons">
+            <q-btn color="grey" icon="far fa-comment" size="sm" flat round />
+            <q-btn color="grey" icon="fas fa-retweet" size="sm" flat round />
+            <q-btn color="grey" icon="far fa-heart" size="sm" flat round />
+            <q-btn
+              color="grey"
+              icon="fas fa-share-square"
+              size="sm"
+              flat
+              round
+            />
+          </div>
         </q-item-section>
       </q-item>
 
@@ -95,9 +107,7 @@ export default defineComponent({
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
 
       Dolorum
-            ipsum quam labore quidem similique velit vitae natus ut consequatur
-            ad recusandae, veritatis inventore eligendi quae dolore quas,
-            voluptate quaerat exercitationem`,
+            ipsum quam labore quidem similique velit vitae natus ut consequaturad recusandae, veritatis inventore eligendi quae dolore quas, voluptate quaerat exercitationem`,
       },
     ]);
 
@@ -121,4 +131,6 @@ export default defineComponent({
   height: 5px
   width: 5px
   border-radius: 100%
+.qweet-icons
+  margin-left: -.5rem
 </style>
