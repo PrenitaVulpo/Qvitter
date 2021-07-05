@@ -45,7 +45,7 @@
       </div>
     </div>
     <q-separator size="10px" color="grey-2" class="divider" />
-    <q-list v-for="qweet in qweetList" :key="qweet">
+    <q-list v-for="(qweet, index) in qweetList" :key="qweet">
       <q-item clickable v-ripple>
         <q-item-section avatar top>
           <q-avatar>
@@ -79,8 +79,18 @@
             <q-btn color="grey" icon="fas fa-retweet" size="sm" flat round />
             <q-btn color="grey" icon="far fa-heart" size="sm" flat round />
             <q-btn
+              v-show="qweet.username !== '@semArroba'"
               color="grey"
               icon="fas fa-share-square"
+              size="sm"
+              flat
+              round
+            />
+            <q-btn
+              @click="deleteQweet(index)"
+              v-show="qweet.username === '@semArroba'"
+              color="grey"
+              icon="fas fa-trash-alt"
               size="sm"
               flat
               round
@@ -130,12 +140,18 @@ export default defineComponent({
   methods: {
     addNewQweet() {
       const content = this.newQweetContent;
-      this.qweetList.push({
-        user: 'Testador',
-        username: '@semArroba',
-        time: Date.now(),
-        content,
-      });
+      if (content) {
+        this.qweetList.unshift({
+          user: 'Testador',
+          username: '@semArroba',
+          time: Date.now(),
+          content,
+        });
+      }
+      this.newQweetContent = '';
+    },
+    deleteQweet(index: number) {
+      this.qweetList.splice(index, 1);
     },
     relativeDate(time: number) {
       return formatDistanceToNow(time);
