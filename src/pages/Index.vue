@@ -22,7 +22,7 @@
             <q-icon
               v-if="newQweetContent !== ''"
               name="close"
-              @click="text = ''"
+              @click="newQweetContent = ''"
               class="cursor-pointer"
             />
           </template>
@@ -34,6 +34,7 @@
       </div>
       <div class="col col-shrink q-mb-md">
         <q-btn
+          @click="addNewQweet"
           class="q-py-sm q-px-md text-weight-bold"
           unelevated
           rounded
@@ -44,7 +45,7 @@
       </div>
     </div>
     <q-separator size="10px" color="grey-2" class="divider" />
-    <q-list>
+    <q-list v-for="qweet in qweetList" :key="qweet">
       <q-item clickable v-ripple>
         <q-item-section avatar top>
           <q-avatar>
@@ -52,8 +53,8 @@
           </q-avatar>
         </q-item-section>
 
-        <q-item-section v-for="qweet in qweetList" :key="qweet">
-          <div class="row items-center">
+        <q-item-section>
+          <div class="row items-center q-mb-xs">
             <q-item-label lines="1" class="col col-shrink text-subtitle1">{{
               qweet.user
             }}</q-item-label>
@@ -64,9 +65,11 @@
               >{{ qweet.username }}</q-item-label
             >
             <div class="q-mx-xs dot" />
-            <q-item-label lines="1" class="q-mt-none col col-shrink">{{
-              qweet.time
-            }}</q-item-label>
+            <q-item-label
+              lines="1"
+              class="q-mt-none col col-shrink text-weight-light"
+              >{{ relativeDate(qweet.time) }}</q-item-label
+            >
           </div>
           <q-item-label caption class="qweet-content text-body1">
             {{ qweet.content }}
@@ -93,17 +96,28 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { formatDistanceToNow } from 'date-fns';
+import Qweet from '../TS/Interfaces/Qweet';
 
 export default defineComponent({
   name: 'PageIndex',
   components: {},
   setup() {
     const newQweetContent = ref('');
-    const qweetList = ref([
+    const qweetList = ref<Qweet[]>([
       {
         user: 'Anna',
         username: '@annamana',
-        time: '1 min ago',
+        time: 1625507373011,
+        content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+
+      Dolorum
+            ipsum quam labore quidem similique velit vitae natus ut consequaturad recusandae, veritatis inventore eligendi quae dolore quas, voluptate quaerat exercitationem`,
+      },
+      {
+        user: 'Anna',
+        username: '@annamana',
+        time: 1625507386203,
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
 
       Dolorum
@@ -112,6 +126,20 @@ export default defineComponent({
     ]);
 
     return { newQweetContent, qweetList };
+  },
+  methods: {
+    addNewQweet() {
+      const content = this.newQweetContent;
+      this.qweetList.push({
+        user: 'Testador',
+        username: '@semArroba',
+        time: Date.now(),
+        content,
+      });
+    },
+    relativeDate(time: number) {
+      return formatDistanceToNow(time);
+    },
   },
 });
 </script>
