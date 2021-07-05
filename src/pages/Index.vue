@@ -46,15 +46,15 @@
     <q-separator size="10px" color="grey-2" class="divider" />
     <q-list>
       <q-item clickable v-ripple>
-        <q-item-section avatar>
+        <q-item-section avatar top>
           <q-avatar>
             <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
           </q-avatar>
         </q-item-section>
 
         <q-item-section v-for="qweet in qweetList" :key="qweet">
-          <div class="row">
-            <q-item-label lines="1" class="col col-shrink text-weight-bold">{{
+          <div class="row items-center">
+            <q-item-label lines="1" class="col col-shrink text-subtitle1">{{
               qweet.user
             }}</q-item-label>
             <div class="q-mr-xs" />
@@ -63,12 +63,12 @@
               class="q-mt-none col col-shrink text-weight-light"
               >{{ qweet.username }}</q-item-label
             >
-            <div class="q-mx-xs dot self-center" />
+            <div class="q-mx-xs dot" />
             <q-item-label lines="1" class="q-mt-none col col-shrink">{{
               qweet.time
             }}</q-item-label>
           </div>
-          <q-item-label caption class="qweet-content">
+          <q-item-label caption class="qweet-content text-body1">
             {{ qweet.content }}
           </q-item-label>
         </q-item-section>
