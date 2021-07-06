@@ -55,20 +55,20 @@
           <q-item clickable v-ripple>
             <q-item-section avatar top>
               <q-avatar>
-                <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
+                <img :src="qweet.user.imageURL" />
               </q-avatar>
             </q-item-section>
 
             <q-item-section>
               <div class="row items-center q-mb-xs">
                 <q-item-label lines="1" class="col col-shrink text-subtitle1">{{
-                  qweet.user
+                  qweet.user.displayName
                 }}</q-item-label>
                 <div class="q-mr-xs" />
                 <q-item-label
                   lines="1"
                   class="q-mt-none col col-shrink text-weight-light"
-                  >{{ qweet.username }}</q-item-label
+                  >{{ qweet.user.username }}</q-item-label
                 >
                 <div class="q-mx-xs dot" />
                 <q-item-label
@@ -99,7 +99,7 @@
                 />
                 <q-btn color="grey" icon="far fa-heart" size="sm" flat round />
                 <q-btn
-                  v-show="qweet.username !== '@semArroba'"
+                  v-show="qweet.user.username !== '@semArroba'"
                   color="grey"
                   icon="fas fa-share-square"
                   size="sm"
@@ -108,7 +108,7 @@
                 />
                 <q-btn
                   @click="deleteQweet(index)"
-                  v-show="qweet.username === '@semArroba'"
+                  v-show="qweet.user.username === '@semArroba'"
                   color="grey"
                   icon="fas fa-trash-alt"
                   size="sm"
@@ -138,8 +138,11 @@ export default defineComponent({
     const newQweetContent = ref('');
     const qweetList = ref<Qweet[]>([
       {
-        user: 'Anna',
-        username: '@annamana',
+        user: {
+          displayName: 'Anna',
+          username: '@annamana',
+          imageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
+        },
         time: 1625507373011,
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
 
@@ -147,8 +150,11 @@ export default defineComponent({
             ipsum quam labore quidem similique velit vitae natus ut consequaturad recusandae, veritatis inventore eligendi quae dolore quas, voluptate quaerat exercitationem`,
       },
       {
-        user: 'Anna',
-        username: '@annamana',
+        user: {
+          displayName: 'Anna',
+          username: '@annamana',
+          imageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
+        },
         time: 1625507386203,
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
 
@@ -164,8 +170,11 @@ export default defineComponent({
       const content = this.newQweetContent;
       if (content) {
         this.qweetList.unshift({
-          user: 'Testador',
-          username: '@semArroba',
+          user: {
+            displayName: 'Testador',
+            username: '@semArroba',
+            imageURL: 'https://avatars.githubusercontent.com/u/52759194?v=4',
+          },
           time: Date.now(),
           content,
         });

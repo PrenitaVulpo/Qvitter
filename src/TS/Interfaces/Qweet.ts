@@ -1,6 +1,7 @@
+import User from './User';
+
 interface Qweet {
-  user: string;
-  username: string;
+  user: User;
   time: number;
   content: string;
 }
