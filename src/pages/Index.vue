@@ -47,8 +47,8 @@
     <q-separator size="10px" color="grey-2" class="divider" />
     <transition-group
       appear
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
+      enter-active-class="animated fadeIn slower"
+      leave-active-class="animated fadeOut slower"
     >
       <q-list v-for="(qweet, index) in qweetList" :key="qweet">
         <q-item clickable v-ripple>
