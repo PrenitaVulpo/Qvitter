@@ -31,3 +31,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+.env.local
+src/boot/firebase.js
+src/boot/firebase.ts
