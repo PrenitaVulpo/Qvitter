@@ -1,7 +1,7 @@
 interface User {
   displayName: string;
   username: string;
-  imageURL: string;
+  profileImageURL: string;
 }
 
 export default User;

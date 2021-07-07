@@ -55,7 +55,7 @@
           <q-item clickable v-ripple>
             <q-item-section avatar top>
               <q-avatar>
-                <img :src="qweet.user.imageURL" />
+                <img :src="qweet.user.profileImageURL" />
               </q-avatar>
             </q-item-section>
 
@@ -141,7 +141,7 @@ export default defineComponent({
         user: {
           displayName: 'Anna',
           username: '@annamana',
-          imageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
+          profileImageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
         },
         time: 1625507373011,
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -153,7 +153,7 @@ export default defineComponent({
         user: {
           displayName: 'Anna',
           username: '@annamana',
-          imageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
+          profileImageURL: 'https://cdn.quasar.dev/img/avatar2.jpg',
         },
         time: 1625507386203,
         content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -173,7 +173,8 @@ export default defineComponent({
           user: {
             displayName: 'Testador',
             username: '@semArroba',
-            imageURL: 'https://avatars.githubusercontent.com/u/52759194?v=4',
+            profileImageURL:
+              'https://avatars.githubusercontent.com/u/52759194?v=4',
           },
           time: Date.now(),
           content,

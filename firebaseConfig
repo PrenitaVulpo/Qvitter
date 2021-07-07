@@ -1,0 +1,19 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB057Kiytt_stSOgJ05yMr_IRV1GO5UOqg",
+    authDomain: "qwitter-52295.firebaseapp.com",
+    projectId: "qwitter-52295",
+    storageBucket: "qwitter-52295.appspot.com",
+    messagingSenderId: "852204776600",
+    appId: "1:852204776600:web:36735d4e895edbf26774ed"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
